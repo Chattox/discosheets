@@ -9,11 +9,11 @@ export const initCommands = (client: ExtendedClient) => {
     commands.forEach((command) => {
       const commandFilePath = path.join(commandsFolderPath, command);
       import(commandFilePath).then((commandFile) => {
-        if ("data" in commandFile && "execute" in commandFile) {
+        if ("data" in commandFile && "run" in commandFile) {
           client.commands.set(commandFile.data.name, commandFile);
         } else {
-          console.warn(
-            `[WARNING] The command at /commands/${command} is missing either the "data" or "execute" property`
+          console.log(
+            `[WARNING] The command at /commands/${command} is missing either the "data" or "run" property`
           );
         }
       });
