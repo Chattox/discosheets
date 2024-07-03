@@ -5,7 +5,9 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "prepare": "husky",
-    "lint": "eslint . --report-unused-disable-directives --max-warnings 0"
+    "lint": "eslint . --report-unused-disable-directives --max-warnings 0",
+    "dev": "nodemon src/app.ts",
+    "build": "tsup src/app.ts --minify"
   },
   "dependencies": {
     "discord.js": "^14.15.3",
@@ -17,6 +19,7 @@
     "eslint": "^8.57.0",
     "husky": "^9.0.11",
     "nodemon": "^3.1.4",
+    "tsup": "^8.1.0",
     "typescript": "^5.5.3",
     "typescript-eslint": "^7.15.0"
   }
