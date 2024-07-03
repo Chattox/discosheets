@@ -1,23 +1,28 @@
 {
   "name": "discosheets",
   "version": "0.0.1",
-  "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "prepare": "husky",
-    "lint": "eslint . --report-unused-disable-directives --max-warnings 0"
+    "lint": "eslint . --report-unused-disable-directives --max-warnings 0",
+    "dev": "nodemon --files src/app.ts",
+    "build": "npx tsc",
+    "start": "node ./dist/app.js",
+    "deploy-commands": "ts-node ./scripts/deployCommands.ts"
   },
   "dependencies": {
     "discord.js": "^14.15.3",
     "dotenv": "^16.4.5"
   },
   "devDependencies": {
-    "@eslint/js": "^9.6.0",
-    "@types/eslint__js": "^8.42.3",
+    "@types/node": "^20.14.9",
+    "@typescript-eslint/eslint-plugin": "^7.15.0",
+    "@typescript-eslint/parser": "^7.15.0",
     "eslint": "^8.57.0",
     "husky": "^9.0.11",
     "nodemon": "^3.1.4",
-    "typescript": "^5.5.3",
-    "typescript-eslint": "^7.15.0"
+    "ts-node": "^10.9.2",
+    "tsup": "^8.1.0",
+    "typescript": "^5.5.3"
   }
 }
