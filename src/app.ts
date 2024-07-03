@@ -1,14 +1,7 @@
-import dotenv from "dotenv";
 import { Events, GatewayIntentBits } from "discord.js";
 import { initCommands } from "./utils/initCommands";
 import { ExtendedClient } from "./utils/ExtendedClient";
-
-// Get bot token from .env file
-dotenv.config();
-const { BOT_TOKEN } = process.env;
-if (!BOT_TOKEN) {
-  throw new Error("Missing discord bot token from .env file");
-}
+import { BOT_TOKEN } from "./utils/config";
 
 // Create new client instance
 const client = new ExtendedClient({
