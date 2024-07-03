@@ -10,8 +10,9 @@
     "forceConsistentCasingInFileNames": true,
     "strict": true,
     "strictNullChecks": true,
-    "skipLibCheck": true
+    "skipLibCheck": true,
+    "types": ["node"]
   },
-  "include": ["src"],
+  "include": ["src/**/*"],
   "exclude": ["dist"]
 }
