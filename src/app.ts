@@ -1,3 +1,4 @@
+import pc from "picocolors";
 import { Events, GatewayIntentBits } from "discord.js";
 import { initCommands } from "./utils/initCommands";
 import { ExtendedClient } from "./utils/ExtendedClient";
@@ -14,9 +15,14 @@ initGoogleSheet(client);
 
 // When client is ready, log to console
 client.once(Events.ClientReady, (readyClient) => {
-  console.log(`Ready! Logged in as ${readyClient.user.tag}`);
-  console.log(`${client.guilds.cache.size} servers`);
-  console.log(`${client.channels.cache.size} channels`);
+  console.log(
+    `${pc.green("[INFO]")} Ready! Logged in as ${readyClient.user.tag}`
+  );
+  console.log(
+    `${pc.green("[INFO]")} Active in ${
+      client.guilds.cache.size
+    } server(s) and ${client.channels.cache.size} channels`
+  );
 });
 
 // Log bot into Discord using bot token
@@ -29,7 +35,9 @@ client.on(Events.InteractionCreate, async (interaction) => {
 
   if (!command) {
     console.log(
-      `[WARNING] No command matching ${interaction.commandName} was found`
+      `${pc.bgBlack(pc.red("[WARNING]"))} No command matching ${
+        interaction.commandName
+      } was found`
     );
   }
 

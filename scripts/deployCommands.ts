@@ -11,6 +11,7 @@
 */
 
 import dotenv from "dotenv";
+import pc from "picocolors";
 import path from "path";
 import fs from "fs";
 import { REST, Routes } from "discord.js";
@@ -37,7 +38,9 @@ const deployCommands = async () => {
       commandArr.push(commandFile.data.toJSON());
     } else {
       console.log(
-        `[WARNING] The command at /commands/${command} is missing either the "data" or "run" property`
+        `${pc.red(
+          "[WARNING]"
+        )} The command at /commands/${command} is missing either the "data" or "run" property`
       );
     }
   }
@@ -46,7 +49,9 @@ const deployCommands = async () => {
 
   try {
     console.log(
-      `Starting deployment of ${commandArr.length} slash commands...`
+      `${pc.green("[INFO]")} Starting deployment of ${
+        commandArr.length
+      } slash commands...`
     );
 
     const data = await rest.put(
@@ -55,7 +60,11 @@ const deployCommands = async () => {
     );
     const dataArr = data as object[];
 
-    console.log(`Successfully deployed ${dataArr.length} slash commands!`);
+    console.log(
+      `${pc.green("[INFO]")} Successfully deployed ${
+        dataArr.length
+      } slash commands!`
+    );
   } catch (err) {
     console.log(err);
   }

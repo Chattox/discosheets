@@ -1,3 +1,4 @@
+import pc from "picocolors";
 import {
   GOOGLE_SERVICE_ACCOUNT_EMAIL,
   GOOGLE_PRIVATE_KEY,
@@ -25,6 +26,10 @@ export const initGoogleSheet = async (client: ExtendedClient) => {
   client.googleSheet
     .loadInfo()
     .then(() =>
-      console.log(`Connected to google sheet "${client.googleSheet?.title}"!`)
+      console.log(
+        `${pc.green("[INFO]")} Connected to google sheet "${
+          client.googleSheet?.title
+        }"!`
+      )
     );
 };

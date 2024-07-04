@@ -14,7 +14,8 @@
     "discord.js": "^14.15.3",
     "dotenv": "^16.4.5",
     "google-auth-library": "^9.11.0",
-    "google-spreadsheet": "^4.1.2"
+    "google-spreadsheet": "^4.1.2",
+    "picocolors": "^1.0.1"
   },
   "devDependencies": {
     "@types/node": "^20.14.9",
