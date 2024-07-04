@@ -6,8 +6,8 @@
     "prepare": "husky",
     "lint": "eslint . --report-unused-disable-directives --max-warnings 0",
     "dev": "nodemon --files src/app.ts",
-    "build": "npx tsc",
-    "start": "node ./dist/app.js",
+    "build": "tsc",
+    "start": "node ./dist/src/app.js",
     "deploy-commands": "ts-node ./scripts/deployCommands.ts"
   },
   "dependencies": {
@@ -24,7 +24,6 @@
     "husky": "^9.0.11",
     "nodemon": "^3.1.4",
     "ts-node": "^10.9.2",
-    "tsup": "^8.1.0",
     "typescript": "^5.5.3"
   }
 }
