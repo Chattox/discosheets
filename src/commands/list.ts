@@ -23,7 +23,7 @@ export const run = async (interaction: ChatInputCommandInteraction) => {
       name,
       value: `Practice: ${practice}
       Location: ${location}
-      Comments: ${comments}`,
+      ${comments ? `Comments: ${comments}` : ""}`,
     };
   });
 
