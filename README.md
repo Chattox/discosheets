@@ -36,4 +36,5 @@ _Spreadsheet like nobody's watching_ 💃
 When writing new commands, they should be added in the `src/commands` folder.  
 Once a new command is written and you're ready to register it to the bot so that it will show up as a slash command in Discord itself, run `npm run deploy-commands`.
 &nbsp;  
+&nbsp;  
 _(**Note:** Discord limits new command registrations to 200 per day per server, which this bot is unlikely to hit but it's something to keep in mind and is why the deploy commands functionality is kept as an entirely seperate script rather than being part of the bot that runs every time on start up. Also, currently `deploy-commands` re-registers all commands in `src/commands` whether they're new or not. This is something I'm looking into to hopefully make more efficient down the line so it only registers new/changed commands)_
