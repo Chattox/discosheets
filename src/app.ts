@@ -2,6 +2,7 @@ import { Events, GatewayIntentBits } from "discord.js";
 import { initCommands } from "./utils/initCommands";
 import { ExtendedClient } from "./utils/ExtendedClient";
 import { BOT_TOKEN } from "./utils/config";
+import { initGoogleSheet } from "./utils/initGoogleSheet";
 
 // Create new client instance
 const client = new ExtendedClient({
@@ -9,6 +10,7 @@ const client = new ExtendedClient({
 });
 
 initCommands(client);
+initGoogleSheet(client);
 
 // When client is ready, log to console
 client.once(Events.ClientReady, (readyClient) => {
