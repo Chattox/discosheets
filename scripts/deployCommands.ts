@@ -12,7 +12,7 @@
 
 import dotenv from "dotenv";
 import path from "path";
-import { promises as fs } from "fs";
+import fs from "fs";
 import { REST, Routes } from "discord.js";
 
 dotenv.config();
@@ -23,49 +23,42 @@ if (!BOT_TOKEN || !BOT_APPLICATION_ID || !GUILD_ID) {
   throw new Error("Missing environment variables!");
 }
 
-const commandArr: object[] = [];
+const deployCommands = async () => {
+  const commandArr: object[] = [];
 
-const commandsFolderPath = path.join(__dirname, "../src/commands");
+  const commandsFolderPath = path.join(__dirname, "../src/commands");
 
-fs.readdir(commandsFolderPath).then((commands) => {
-  commands.forEach((command) => {
+  const commands = fs.readdirSync(commandsFolderPath);
+
+  for (const command of commands) {
     const commandFilePath = path.join(commandsFolderPath, command);
-    import(commandFilePath).then((commandFile) => {
-      if ("data" in commandFile && "run" in commandFile) {
-        commandArr.push(commandFile.data.toJSON());
-      } else {
-        console.log(
-          `[WARNING] The command at /commands/${command} is missing either the "data" or "run" property`
-        );
-      }
+    const commandFile = await import(commandFilePath);
+    if ("data" in commandFile && "run" in commandFile) {
+      commandArr.push(commandFile.data.toJSON());
+    } else {
+      console.log(
+        `[WARNING] The command at /commands/${command} is missing either the "data" or "run" property`
+      );
+    }
+  }
 
-      const rest = new REST().setToken(BOT_TOKEN);
+  const rest = new REST().setToken(BOT_TOKEN);
 
-      const deploy = async () => {
-        try {
-          console.log(
-            `Starting deployment of ${commandArr.length} slash commands...`
-          );
+  try {
+    console.log(
+      `Starting deployment of ${commandArr.length} slash commands...`
+    );
 
-          rest
-            .put(
-              Routes.applicationGuildCommands(BOT_APPLICATION_ID, GUILD_ID),
-              {
-                body: commandArr,
-              }
-            )
-            .then((res) => {
-              const resArr = res as object[];
-              console.log(
-                `Successfully deployed ${resArr.length} slash commands!`
-              );
-            });
-        } catch (err) {
-          console.log(err);
-        }
-      };
+    const data = await rest.put(
+      Routes.applicationGuildCommands(BOT_APPLICATION_ID, GUILD_ID),
+      { body: commandArr }
+    );
+    const dataArr = data as object[];
 
-      deploy();
-    });
-  });
-});
+    console.log(`Successfully deployed ${dataArr.length} slash commands!`);
+  } catch (err) {
+    console.log(err);
+  }
+};
+
+deployCommands();

@@ -13,6 +13,9 @@
     "skipLibCheck": true,
     "types": ["node"]
   },
+  "ts-node": {
+    "files": true
+  },
   "include": ["src", "scripts"],
   "exclude": ["dist"]
 }
