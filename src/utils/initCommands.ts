@@ -1,3 +1,4 @@
+import pc from "picocolors";
 import { promises as fs } from "fs";
 import path from "path";
 import { ExtendedClient } from "./ExtendedClient";
@@ -13,7 +14,9 @@ export const initCommands = (client: ExtendedClient) => {
           client.commands.set(commandFile.data.name, commandFile);
         } else {
           console.log(
-            `[WARNING] The command at /commands/${command} is missing either the "data" or "run" property`
+            `${pc.red(
+              "[WARNING]"
+            )} The command at /commands/${command} is missing either the "data" or "run" property`
           );
         }
       });
