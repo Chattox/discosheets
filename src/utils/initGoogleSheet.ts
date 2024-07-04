@@ -25,6 +25,6 @@ export const initGoogleSheet = async (client: ExtendedClient) => {
   client.googleSheet
     .loadInfo()
     .then(() =>
-      console.log(`Connected to google sheet "${client.googleSheet?.title}!`)
+      console.log(`Connected to google sheet "${client.googleSheet?.title}"!`)
     );
 };
