@@ -6,6 +6,13 @@ export declare global {
     data: SlashCommandBuilder;
     run: (any) => void;
   };
+
+  type RowData = {
+    name: string;
+    practice: string;
+    location: string;
+    comments: string;
+  };
 }
 
 export declare module "discord.js" {
