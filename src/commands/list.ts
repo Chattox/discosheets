@@ -13,6 +13,16 @@ export const run = async (interaction: ChatInputCommandInteraction) => {
   const sheet = interaction.client.googleSheet?.sheetsByIndex[0];
   const rows = await sheet?.getRows<RowData>({ limit: 25 });
 
+  if (!rows?.length) {
+    const errorEmbed = new EmbedBuilder()
+      .setColor("Red")
+      .setTitle("Error!")
+      .setDescription("The list appears empty!");
+
+    await interaction.reply({ embeds: [errorEmbed], ephemeral: true });
+    return;
+  }
+
   const embedFields = rows?.map((row) => {
     const name = row.get("name");
     const practice = row.get("practice");
