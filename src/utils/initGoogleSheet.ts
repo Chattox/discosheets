@@ -23,13 +23,13 @@ export const initGoogleSheet = async (client: ExtendedClient) => {
 
   client.googleSheet = sheet;
 
-  client.googleSheet
-    .loadInfo()
-    .then(() =>
-      console.log(
-        `${pc.green("[INFO]")} Connected to google sheet "${
-          client.googleSheet?.title
-        }"!`
-      )
-    );
+  await client.googleSheet.loadInfo();
+
+  client.googleWorksheet = client.googleSheet.sheetsByIndex[0];
+
+  console.log(
+    `${pc.green("[INFO]")} Connected to google sheet "${
+      client.googleSheet?.title
+    }"!`
+  );
 };
