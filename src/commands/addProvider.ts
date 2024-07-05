@@ -37,13 +37,12 @@ export const data = new SlashCommandBuilder()
   );
 
 export const run = async (interaction: ChatInputCommandInteraction) => {
-  const sheet = interaction.client.googleSheet?.sheetsByIndex[0];
   const name = interaction.options.getString("name");
   const practice = interaction.options.getString("practice");
   const location = interaction.options.getString("location");
   const comments = interaction.options.getString("comments");
 
-  const addedRow = await sheet?.addRow({
+  const addedRow = await interaction.client.googleWorksheet?.addRow({
     name: name as string,
     practice: practice as string,
     location: location as string,

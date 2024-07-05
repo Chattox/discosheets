@@ -10,8 +10,10 @@ export const data = new SlashCommandBuilder()
   .setDescription("Shows a list of providers currently added to the sheet");
 
 export const run = async (interaction: ChatInputCommandInteraction) => {
-  const sheet = interaction.client.googleSheet?.sheetsByIndex[0];
-  const rows = await sheet?.getRows<RowData>({ limit: 25 });
+  const rows = await interaction.client.googleWorksheet?.getRows<RowData>({
+    limit: 25,
+  });
+  console.log(interaction.client.googleWorksheet?.headerValues);
 
   if (!rows?.length) {
     const errorEmbed = new EmbedBuilder()
