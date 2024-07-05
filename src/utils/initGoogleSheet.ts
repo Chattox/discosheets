@@ -22,14 +22,29 @@ export const initGoogleSheet = async (client: ExtendedClient) => {
   );
 
   client.googleSheet = sheet;
+  await client.googleSheet.loadInfo();
+  console.log(
+    `${pc.green("[INFO]")} Connected to google sheet "${
+      client.googleSheet?.title
+    }"!`
+  );
 
-  client.googleSheet
-    .loadInfo()
-    .then(() =>
-      console.log(
-        `${pc.green("[INFO]")} Connected to google sheet "${
-          client.googleSheet?.title
-        }"!`
-      )
+  client.googleWorksheet = client.googleSheet.sheetsByIndex[0];
+  await client.googleWorksheet.loadHeaderRow();
+  const headers = ["name", "practice", "location", "comments"];
+  if (
+    !headers.every((header) =>
+      client.googleWorksheet?.headerValues.includes(header)
+    )
+  ) {
+    throw new Error(
+      "Missing headers in google worksheet, make sure the top row contains 'name', 'practice', 'location', and 'comments'"
     );
+  }
+
+  console.log(
+    `${pc.green("[INFO]")} Connected to worksheet "${
+      client.googleWorksheet.title
+    }"`
+  );
 };
