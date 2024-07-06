@@ -4,17 +4,20 @@ import { initCommands } from "./utils/initCommands";
 import { ExtendedClient } from "./utils/ExtendedClient";
 import { BOT_TOKEN } from "./utils/config";
 import { initGoogleSheet } from "./utils/initGoogleSheet";
+import { initStaffChannel } from "./utils/initStaffChannel";
 
 // Create new client instance
 const client = new ExtendedClient({
   intents: [GatewayIntentBits.Guilds],
 });
 
-initCommands(client);
-initGoogleSheet(client);
-
 // When client is ready, log to console
-client.once(Events.ClientReady, (readyClient) => {
+client.once(Events.ClientReady, async (readyClient) => {
+  await (async () => {
+    await initCommands(client);
+    await initGoogleSheet(client);
+    await initStaffChannel(client);
+  })();
   console.log(
     `${pc.green("[INFO]")} Ready! Logged in as ${readyClient.user.tag}`
   );
