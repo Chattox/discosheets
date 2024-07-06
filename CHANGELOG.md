@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.2.2](https://github.com/Chattox/discosheets/compare/v0.2.1...v0.2.2) (2024-07-06)
+
+
+### Bug Fixes
+
+* **sheets:** incorrect header value ([#20](https://github.com/Chattox/discosheets/issues/20)) ([bbc8849](https://github.com/Chattox/discosheets/commit/bbc88499bda949422f76b2cae1955f3939f5bcf2))
+
 ## [0.2.1](https://github.com/Chattox/discosheets/compare/v0.2.0...v0.2.1) (2024-07-06)
 
 
