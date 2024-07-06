@@ -71,22 +71,24 @@ export const run = async (interaction: ChatInputCommandInteraction) => {
     ephemeral: true,
   });
 
-  const staffNotificationEmbedFields: APIEmbedField[] = [
-    { name: "Name", value: name },
-    { name: "Practice", value: practice },
-    { name: "Location", value: location },
-    { name: "Comments", value: comments ? comments : "n/a" },
-  ];
+  if (interaction.client.staffChannel) {
+    const staffNotificationEmbedFields: APIEmbedField[] = [
+      { name: "Name", value: name },
+      { name: "Practice", value: practice },
+      { name: "Location", value: location },
+      { name: "Comments", value: comments ? comments : "n/a" },
+    ];
 
-  const staffNotificationEmbed = new EmbedBuilder()
-    .setColor("Green")
-    .setTitle("New provider added!")
-    .setURL(
-      `https://docs.google.com/spreadsheets/d/${GOOGLE_SPREADSHEET_ID}/?gid=0#gid=0&range=${addedRowNumber}:${addedRowNumber}`
-    )
-    .setFields(staffNotificationEmbedFields);
+    const staffNotificationEmbed = new EmbedBuilder()
+      .setColor("Green")
+      .setTitle("New provider added!")
+      .setURL(
+        `https://docs.google.com/spreadsheets/d/${GOOGLE_SPREADSHEET_ID}/?gid=0#gid=0&range=${addedRowNumber}:${addedRowNumber}`
+      )
+      .setFields(staffNotificationEmbedFields);
 
-  await interaction.client.staffChannel?.send({
-    embeds: [staffNotificationEmbed],
-  });
+    await interaction.client.staffChannel.send({
+      embeds: [staffNotificationEmbed],
+    });
+  }
 };
