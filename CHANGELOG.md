@@ -1,5 +1,17 @@
 # Changelog
 
+## [0.2.0](https://github.com/Chattox/discosheets/compare/v0.1.0...v0.2.0) (2024-07-06)
+
+
+### Features
+
+* **bot:** check for correct header values on startup ([#13](https://github.com/Chattox/discosheets/issues/13)) ([2f0bfc0](https://github.com/Chattox/discosheets/commit/2f0bfc0bf0ebfc82d3d896f6e8f53ac813750ad3))
+* **bot:** improve logging ([#12](https://github.com/Chattox/discosheets/issues/12)) ([11c1ab1](https://github.com/Chattox/discosheets/commit/11c1ab1e19a9b46bf74de043684babad7ab5ecdc))
+* **bot:** make staff channel notifications optional ([#16](https://github.com/Chattox/discosheets/issues/16)) ([f7f4195](https://github.com/Chattox/discosheets/commit/f7f41953a2371679764ba47ad845a2fcb71281f1))
+* **commands:** error handling for empty list on list command ([#9](https://github.com/Chattox/discosheets/issues/9)) ([018048a](https://github.com/Chattox/discosheets/commit/018048a91f685a166499cc7056e33ae02912a4bd))
+* **commands:** staff channel notification on addprovider command ([#14](https://github.com/Chattox/discosheets/issues/14)) ([a5f2576](https://github.com/Chattox/discosheets/commit/a5f2576fe7115b82177c1fa982c155564848003e))
+* **commands:** truncate long fields returned by list command and add link to sheet ([#15](https://github.com/Chattox/discosheets/issues/15)) ([3968572](https://github.com/Chattox/discosheets/commit/3968572162960e4b7ccab45e50e694fed2879a67))
+
 ## [0.1.0](https://github.com/Chattox/discosheets/compare/discosheets-v0.0.1...discosheets-v0.1.0) (2024-07-04)
 
 
