@@ -82,7 +82,7 @@ export const run = async (interaction: ChatInputCommandInteraction) => {
     .setColor("Green")
     .setTitle("New provider added!")
     .setURL(
-      `https://docs.google.com/spreadsheets/d/${GOOGLE_SPREADSHEET_ID}/?range=${addedRowNumber}:${addedRowNumber}`
+      `https://docs.google.com/spreadsheets/d/${GOOGLE_SPREADSHEET_ID}/?gid=0#gid=0&range=${addedRowNumber}:${addedRowNumber}`
     )
     .setFields(staffNotificationEmbedFields);
 
