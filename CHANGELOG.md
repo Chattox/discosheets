@@ -1,5 +1,17 @@
 # Changelog
 
+## [0.2.1](https://github.com/Chattox/discosheets/compare/v0.2.0...v0.2.1) (2024-07-06)
+
+
+### Bug Fixes
+
+* **commands:** incorrect char limit for name field in addprovider command ([#17](https://github.com/Chattox/discosheets/issues/17)) ([4f50ece](https://github.com/Chattox/discosheets/commit/4f50ece5c06ca2ffd0ee6c99305eb50230ce3edd))
+
+
+### Miscellaneous Chores
+
+* release 0.2.1 ([#19](https://github.com/Chattox/discosheets/issues/19)) ([5267f9e](https://github.com/Chattox/discosheets/commit/5267f9e81ed5e7c3b4a461d8f14674c40fd85f6f))
+
 ## [0.2.0](https://github.com/Chattox/discosheets/compare/v0.1.0...v0.2.0) (2024-07-06)
 
 
