@@ -31,14 +31,14 @@ export const initGoogleSheet = async (client: ExtendedClient) => {
 
   client.googleWorksheet = client.googleSheet.sheetsByIndex[0];
   await client.googleWorksheet.loadHeaderRow();
-  const headers = ["name", "practice", "location", "comments"];
+  const headers = ["provider", "practice", "location", "comments"];
   if (
     !headers.every((header) =>
       client.googleWorksheet?.headerValues.includes(header)
     )
   ) {
     throw new Error(
-      "Missing headers in google worksheet, make sure the top row contains 'name', 'practice', 'location', and 'comments'"
+      "Missing headers in google worksheet, make sure the top row contains 'provider', 'practice', 'location', and 'comments'"
     );
   }
 

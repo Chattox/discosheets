@@ -27,13 +27,13 @@ export const run = async (interaction: ChatInputCommandInteraction) => {
   }
 
   const embedFields: APIEmbedField[] = rows?.map((row) => {
-    const name = row.get("name");
+    const provider = row.get("provider");
     const practice = row.get("practice");
     const location = row.get("location");
     const comments = row.get("comments");
 
     return {
-      name: truncateField(name),
+      name: truncateField(provider),
       value: `Practice: ${truncateField(practice)}
       Location: ${truncateField(location)}
       ${comments ? `Comments: ${truncateField(comments)}` : ""}`,

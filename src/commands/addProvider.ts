@@ -11,7 +11,7 @@ export const data = new SlashCommandBuilder()
   .setDescription("Add a provider to our recommendation list!")
   .addStringOption((option) =>
     option
-      .setName("name")
+      .setName("provider")
       .setDescription("Provider name and title formatted like Jane Doe MD")
       .setRequired(true)
       .setMaxLength(1024)
@@ -43,13 +43,13 @@ export const data = new SlashCommandBuilder()
   );
 
 export const run = async (interaction: ChatInputCommandInteraction) => {
-  const name = interaction.options.getString("name") as string;
+  const provider = interaction.options.getString("provider") as string;
   const practice = interaction.options.getString("practice") as string;
   const location = interaction.options.getString("location") as string;
   const comments = interaction.options.getString("comments") as string;
 
   const addedRow = await interaction.client.googleWorksheet?.addRow({
-    name: name,
+    provider: provider,
     practice: practice,
     location: location,
     comments: comments ? comments : "",
@@ -62,7 +62,7 @@ export const run = async (interaction: ChatInputCommandInteraction) => {
     .setTitle("Success!")
     .setDescription(
       `${addedRow?.get(
-        "name"
+        "provider"
       )} has been added to the list!\n Please contact the mods to request edit/removal`
     );
 
@@ -73,7 +73,7 @@ export const run = async (interaction: ChatInputCommandInteraction) => {
 
   if (interaction.client.staffChannel) {
     const staffNotificationEmbedFields: APIEmbedField[] = [
-      { name: "Name", value: name },
+      { name: "Provider", value: provider },
       { name: "Practice", value: practice },
       { name: "Location", value: location },
       { name: "Comments", value: comments ? comments : "n/a" },
