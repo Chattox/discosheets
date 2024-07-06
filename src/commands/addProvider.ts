@@ -14,7 +14,7 @@ export const data = new SlashCommandBuilder()
       .setName("name")
       .setDescription("Provider name and title formatted like Jane Doe MD")
       .setRequired(true)
-      .setMaxLength(256)
+      .setMaxLength(1024)
   )
   .addStringOption((option) =>
     option
