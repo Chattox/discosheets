@@ -21,6 +21,9 @@ _Spreadsheet like nobody's watching_ 💃
   - The Guild ID is the ID of the server you want the bot to run on. You can get this by right clicking on the server icon in Discord with developer mode enabled, and clicking `Copy Server ID` at the bottom
   - Google service account email and private key are obtained from the Google developers console. [Here](https://theoephraim.github.io/node-google-spreadsheet/#/guides/authentication) is a pretty handy guide for setting that up and getting those credentials, specifically [Setting up your Application](https://theoephraim.github.io/node-google-spreadsheet/#/guides/authentication?id=setting-up-your-quotapplicationquot) and [Service Account](https://theoephraim.github.io/node-google-spreadsheet/#/guides/authentication?id=service-account). Once you've done those steps you can skip the rest of the guide and just paste the relevant credentials into the matching variables in your `.env` file
   - The Google spreadsheet ID is the ID of the google spreadsheet you want the bot to work with and edit. This can be obtained from the URL of the spreadsheet when you're in it. For example: `https://docs.google.com/spreadsheets/d/{THIS-BIT-IS-THE-SPREADSHEET-ID}/edit?gid=0#gid=0`
+  - The staff channel ID is the ID of the channel within your server where Discosheets will post notifications whenever a new provider is added to the list
+    - This field is optional, if you would prefer Discosheets to not send these notifications, just leave this field blank
+    - ❗❗ **Important:** If you do fill out this field, the Discosheets bot will need `View channel` and `Send messages` permissions for this channel!
 
 ### Building and running locally
 
