@@ -13,7 +13,6 @@ export const run = async (interaction: ChatInputCommandInteraction) => {
   const rows = await interaction.client.googleWorksheet?.getRows<RowData>({
     limit: 25,
   });
-  console.log(interaction.client.googleWorksheet?.headerValues);
 
   if (!rows?.length) {
     const errorEmbed = new EmbedBuilder()
@@ -25,7 +24,7 @@ export const run = async (interaction: ChatInputCommandInteraction) => {
     return;
   }
 
-  const embedFields = rows?.map((row) => {
+  const embedFields: APIEmbedField[] = rows?.map((row) => {
     const name = row.get("name");
     const practice = row.get("practice");
     const location = row.get("location");
@@ -42,6 +41,6 @@ export const run = async (interaction: ChatInputCommandInteraction) => {
   const replyEmbed = new EmbedBuilder()
     .setColor("Green")
     .setTitle("List of Providers")
-    .addFields(embedFields as APIEmbedField[]);
+    .addFields(embedFields);
   await interaction.reply({ embeds: [replyEmbed], ephemeral: true });
 };

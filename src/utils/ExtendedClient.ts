@@ -1,4 +1,4 @@
-import { Client, ClientOptions, Collection } from "discord.js";
+import { Client, ClientOptions, Collection, TextChannel } from "discord.js";
 import {
   GoogleSpreadsheet,
   GoogleSpreadsheetWorksheet,
@@ -6,11 +6,14 @@ import {
 
 export class ExtendedClient extends Client {
   commands: Collection<string, CommandModule>;
-  googleSheet: GoogleSpreadsheet | undefined;
-  googleWorksheet: GoogleSpreadsheetWorksheet | undefined;
+  googleSheet?: GoogleSpreadsheet;
+  googleWorksheet?: GoogleSpreadsheetWorksheet;
+  staffChannel?: TextChannel;
   constructor(options: ClientOptions) {
     super(options);
     this.commands = new Collection();
     this.googleSheet = undefined;
+    this.googleWorksheet = undefined;
+    this.staffChannel = undefined;
   }
 }
