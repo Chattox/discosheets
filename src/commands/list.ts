@@ -4,6 +4,8 @@ import {
   EmbedBuilder,
   SlashCommandBuilder,
 } from "discord.js";
+import { GOOGLE_SPREADSHEET_ID } from "../utils/config";
+import { truncateField } from "../utils/truncateField";
 
 export const data = new SlashCommandBuilder()
   .setName("list")
@@ -11,7 +13,7 @@ export const data = new SlashCommandBuilder()
 
 export const run = async (interaction: ChatInputCommandInteraction) => {
   const rows = await interaction.client.googleWorksheet?.getRows<RowData>({
-    limit: 25,
+    limit: 10,
   });
 
   if (!rows?.length) {
@@ -31,16 +33,19 @@ export const run = async (interaction: ChatInputCommandInteraction) => {
     const comments = row.get("comments");
 
     return {
-      name,
-      value: `Practice: ${practice}
-      Location: ${location}
-      ${comments ? `Comments: ${comments}` : ""}`,
+      name: truncateField(name),
+      value: `Practice: ${truncateField(practice)}
+      Location: ${truncateField(location)}
+      ${comments ? `Comments: ${truncateField(comments)}` : ""}`,
     };
   });
+
+  const sheetURL = `https://docs.google.com/spreadsheets/d/${GOOGLE_SPREADSHEET_ID}/`;
 
   const replyEmbed = new EmbedBuilder()
     .setColor("Green")
     .setTitle("List of Providers")
+    .setDescription(`_For more, click [here](${sheetURL})_`)
     .addFields(embedFields);
   await interaction.reply({ embeds: [replyEmbed], ephemeral: true });
 };
