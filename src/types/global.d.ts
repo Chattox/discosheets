@@ -8,7 +8,7 @@ export declare global {
   };
 
   type RowData = {
-    name: string;
+    provider: string;
     practice: string;
     location: string;
     comments: string;
